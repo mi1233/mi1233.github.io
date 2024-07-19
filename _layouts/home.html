@@ -96,6 +96,25 @@ gitlab.com/mactv/mactv 麦克TV首页↓：<br>
     <br>
     4. LangChain <br>
     5. Dify <br>
+    6. ✅ <a href="#" target="_blank">github和gitlab个人网页：</a> <br>
+       [1]:github新建项目，命名 为用户名.github.io即可，fork项目需要到pages action生成！
+       [2]:gitlab新建  用户名.gitlab.io,且要新建.gitlab-ci.yml文件，内容如下：
+  ------------------------------------  
+    
+  pages:
+  stage: deploy
+  script:
+    - mkdir .public
+    - cp -r ./* .public
+    - rm -rf public
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+  -----------------------------------------  
   </div>
 </details>
 
